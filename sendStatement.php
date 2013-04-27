@@ -45,7 +45,7 @@ function make_request($data, $url, $basicLogin, $basicPass) {
 				'Authorization: Basic' . base64_encode( $basicLogin . ':' . $basicPass), 
 				'Content-Type: application/json', 
 				'Accept: application/json, */*; q=0.01',
-				'X-Experience-API-Version: 0.95'
+				'X-Experience-API-Version: 1.0.0'
 			), 
 			'content' => myJson_encode($data), 
 		), 
