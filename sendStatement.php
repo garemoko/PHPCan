@@ -42,7 +42,7 @@ function make_request($data, $url, $basicLogin, $basicPass) {
 			'method' => 'POST', 
 			'ignore_errors' => false, 
 			'header' => array(
-				'Authorization: Basic' . base64_encode( $basicLogin . ':' . $basicPass), 
+				'Authorization: Basic ' . base64_encode( $basicLogin . ':' . $basicPass), 
 				'Content-Type: application/json', 
 				'Accept: application/json, */*; q=0.01',
 				'X-Experience-API-Version: 1.0.0'
@@ -52,7 +52,7 @@ function make_request($data, $url, $basicLogin, $basicPass) {
 	);
 	$context = stream_context_create($streamopt);
 
-	$stream = fopen($url . 'statements', 'rb', false, $context);
+	$stream = fopen($url . 'statements', 'rb', false, $context) or die(print_r(error_get_last(),true));
 	$ret = stream_get_contents($stream);
 	$meta = stream_get_meta_data($stream);
 	if ($ret) {
